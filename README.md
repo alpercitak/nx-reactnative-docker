@@ -1,6 +1,9 @@
+# nx-reactnative-docker
 
-
-# NxReactnativeDocker
+```bash
+  $ nx docker-web app-001
+  $ nx docker-web app-002
+```
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -78,8 +81,6 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
 
 ## ☁ Nx Cloud
 

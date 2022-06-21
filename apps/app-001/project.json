@@ -46,6 +46,17 @@
       "executor": "@nrwl/expo:build-web",
       "options": {}
     },
+    "docker-web": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx build-web app-001",
+          "docker-compose build app-001",
+          "docker-compose up --force-recreate --remove-orphans app-001"
+        ],
+        "parallel": false
+      }
+    },
     "build-status": {
       "executor": "@nrwl/expo:build-web",
       "options": {}
