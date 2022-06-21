@@ -23,6 +23,7 @@ import NxCloud from './icons/nx-cloud.svg';
 import GitHub from './icons/github.svg';
 import Terminal from './icons/terminal.svg';
 import Heart from './icons/heart.svg';
+import { SampleButton } from '@nx-reactnative-docker/components';
 
 const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
@@ -30,6 +31,7 @@ const App = () => {
 
   return (
     <>
+      <SampleButton title="App 001"></SampleButton>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView

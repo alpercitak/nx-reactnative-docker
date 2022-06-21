@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-reactnative-docker/components": ["libs/components/src/index.ts"]
+      "@nx-reactnative-docker/components": ["libs/components/src/index.tsx"]
     }
   },
   "exclude": ["node_modules", "tmp"]
