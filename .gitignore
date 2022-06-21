@@ -52,3 +52,4 @@ npm-debug.*
 web-build/
 
 apps/app-001-e2e/artifacts
+apps/app-002-e2e/artifacts
