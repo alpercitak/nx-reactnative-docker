@@ -1,0 +1,45 @@
+## builds the projects inside docker container
+
+FROM node:16-alpine AS build-base
+
+WORKDIR /usr/src/app
+
+## install necessary packages one by one with npm
+RUN npm i react@18.2.0                          --legacy-peer-deps --loglevel verbose
+RUN npm i react-dom@18.2.0                      --legacy-peer-deps --loglevel verbose
+RUN npm i react-native-reanimated@2.8.0         --legacy-peer-deps --loglevel verbose
+RUN npm i react-native-web@0.17.7               --legacy-peer-deps --loglevel verbose
+RUN npm i expo@45.0.5                           --legacy-peer-deps --loglevel verbose
+RUN npm i typescript@4.7.2                      --legacy-peer-deps --loglevel verbose
+RUN npm i babel-preset-expo@9.1.0               --legacy-peer-deps --loglevel verbose
+RUN npm i @svgr/webpack@5.5.0                   --legacy-peer-deps --loglevel verbose
+RUN npm i nx@14.3.6                             --legacy-peer-deps --loglevel verbose
+RUN npm i @nrwl/expo@14.3.1                     --legacy-peer-deps --loglevel verbose
+RUN npm i html-webpack-plugin@5                 --legacy-peer-deps --loglevel verbose
+RUN npm i sharp-cli@2.1.0                       --legacy-peer-deps --loglevel verbose
+
+COPY . .
+
+FROM nginx:1.18-alpine AS deploy-base
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+FROM build-base AS build-app-001
+
+ARG CACHEBUST=1
+RUN rm -rf /usr/src/app/apps/app-001/node_modules
+RUN npx nx build-web app-001 --verbose
+
+FROM deploy-base AS deploy-app-001
+
+COPY --from=build-app-001 /usr/src/app/apps/app-001/web-build /frontend/build
+
+FROM build-base AS build-app-002
+
+ARG CACHEBUST=1
+RUN rm -rf /usr/src/app/apps/app-002/node_modules
+RUN npx nx build-web app-002 --verbose
+
+FROM deploy-base AS deploy-app-002
+
+COPY --from=build-app-002 /usr/src/app/apps/app-002/web-build /frontend/build

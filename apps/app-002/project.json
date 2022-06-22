@@ -51,8 +51,8 @@
       "options": {
         "commands": [
           "nx build-web app-002",
-          "docker-compose build app-002",
-          "docker-compose up --force-recreate --remove-orphans app-002"
+          "docker-compose -f docker-compose.local.yml build app-002-local",
+          "docker-compose -f docker-compose.local.yml up --force-recreate app-002-local"
         ],
         "parallel": false
       }

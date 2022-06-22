@@ -7,3 +7,5 @@ node_modules
 README.md
 
 **/.expo
+Dockerfile*
+docker-compose.yml

@@ -56,7 +56,7 @@ const App = () => {
                   stroke="hsla(162, 47%, 50%, 1)"
                 />
                 <Text style={[styles.textLg, styles.heroTitleText]}>
-                  You're up and running
+                  You're up and running and dockerized
                 </Text>
               </View>
               <TouchableOpacity

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app-001-local:
+    image: nx-reactnative-docker-app-001-local
+    build:
+      context: .
+      dockerfile: Dockerfile.localbuild
+      target: deploy-app-001
+    ports:
+      - 4001:80
+
+  app-002-local:
+    image: nx-reactnative-docker-app-002-local
+    build:
+      context: .
+      dockerfile: Dockerfile.localbuild
+      target: deploy-app-002
+    ports:
+      - 4002:80
