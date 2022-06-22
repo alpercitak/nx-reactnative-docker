@@ -10,8 +10,8 @@
 ## build in docker & push
 
 ```bash
-  $ docker-compose up --build app-001
-  $ docker-compose up --build app-002
+  $ docker-compose up --build --remove-orphans app-001
+  $ docker-compose up --build --remove-orphans app-002
 ```
 
 This project was generated using [Nx](https://nx.dev).
